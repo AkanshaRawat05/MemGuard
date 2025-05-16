@@ -1,1 +1,1 @@
-# MemGuard
+# MemGuard: Memory Leak Detector
