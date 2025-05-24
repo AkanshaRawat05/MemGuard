@@ -1,0 +1,90 @@
+{
+    "allocations": [
+        {
+            "address": "0x60b52ffbd470",
+            "dangling_pointer": false,
+            "double_free": true,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 39,
+            "is_array": true,
+            "is_freed": true,
+            "line": 38,
+            "size": 40
+        },
+        {
+            "address": "0x60b52ffbd580",
+            "dangling_pointer": true,
+            "double_free": false,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 34,
+            "is_array": false,
+            "is_freed": true,
+            "line": 29,
+            "size": 4
+        },
+        {
+            "address": "0x60b52ffbd350",
+            "dangling_pointer": false,
+            "double_free": false,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 26,
+            "is_array": false,
+            "is_freed": true,
+            "line": 25,
+            "size": 4
+        },
+        {
+            "address": "0x60b52ffbd3e0",
+            "dangling_pointer": false,
+            "double_free": false,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 22,
+            "is_array": false,
+            "is_freed": true,
+            "line": 21,
+            "size": 4
+        },
+        {
+            "address": "0x60b52ffbd470",
+            "dangling_pointer": false,
+            "double_free": true,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 16,
+            "is_array": false,
+            "is_freed": true,
+            "line": 15,
+            "size": 40
+        },
+        {
+            "address": "0x60b52ffbd350",
+            "dangling_pointer": false,
+            "double_free": false,
+            "file": "src/main.cpp",
+            "free_file": "src/main.cpp",
+            "free_line": 11,
+            "is_array": false,
+            "is_freed": true,
+            "line": 10,
+            "size": 4
+        },
+        {
+            "address": "0x60b52ffbceb0",
+            "dangling_pointer": false,
+            "double_free": false,
+            "file": "src/main.cpp",
+            "is_array": false,
+            "is_freed": false,
+            "line": 6,
+            "size": 4
+        }
+    ],
+    "current_bytes": 4,
+    "peak_bytes": 44,
+    "total_allocations": 7,
+    "total_frees": 6
+}

@@ -1,0 +1,8 @@
+Address,Size,File,Line,Freed,Free File,Free Line,Array?,Double Free,Dangling Ptr
+0x60b52ffbd470,40,src/main.cpp,38,Yes,src/main.cpp,39,Yes,Yes,No
+0x60b52ffbd580,4,src/main.cpp,29,Yes,src/main.cpp,34,No,No,Yes
+0x60b52ffbd350,4,src/main.cpp,25,Yes,src/main.cpp,26,No,No,No
+0x60b52ffbd3e0,4,src/main.cpp,21,Yes,src/main.cpp,22,No,No,No
+0x60b52ffbd470,40,src/main.cpp,15,Yes,src/main.cpp,16,No,Yes,No
+0x60b52ffbd350,4,src/main.cpp,10,Yes,src/main.cpp,11,No,No,No
+0x60b52ffbceb0,4,src/main.cpp,6,No,unknown,-1,No,No,No
