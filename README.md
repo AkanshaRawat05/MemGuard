@@ -75,7 +75,7 @@ Manual memory management in C/C++ is error-prone. Common mistakes like:
 
 Or from the web interface:
 
-![Memory Leak Report Screenshot](assets/report-screenshot.png)
+![Memory Leak Report Screenshot](assets/output.jpg)
 
 * Total Allocations: 7
 * Total Frees: 6
