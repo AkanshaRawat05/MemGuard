@@ -2,11 +2,30 @@
 #define TRACKER_H
 
 #ifdef __cplusplus
-#include <cstddef>  // for std::size_t
+#include <cstddef> // for std::size_t
+#include "third_party/json.hpp"
+using json = nlohmann::json;
 #else
 #include <stddef.h>
 #endif
 
+struct AllocationInfo {
+    void* ptr = nullptr;
+    size_t size = 0;
+    std::string file;        // Source file where allocated
+    int line = 0;            // Line number where allocated
+    bool is_freed = false;   // Whether memory was freed
+    bool is_array = false;   // true if allocated using new[]
+    std::string free_file;   // Source file where freed
+    int free_line = 0;       // Line number where freed
+
+    bool double_free = false;       // True if this pointer was freed more than once
+    bool dangling_pointer = false;  // True if this pointer was used after being freed
+
+    AllocationInfo* next = nullptr; // Linked list pointer
+};
+
+extern AllocationInfo* head;
 extern size_t total_allocations;
 extern size_t total_frees;
 extern size_t current_bytes;
@@ -30,6 +49,9 @@ void my_delete_array(void* ptr, const char* file, int line);
 
 void print_memory_report(void);
 void print_memory_stats(void);
+void export_json_report(const char* filename);
+void export_csv_report(const char* filename);
+void debug_head_location();
 
 #ifdef __cplusplus
 }
@@ -61,5 +83,6 @@ void operator delete[](void* ptr, std::size_t size) noexcept;
 #define NEW_ARRAY new(__FILE__, __LINE__)
 #define DELETE_ARRAY(ptr) my_delete_array(ptr, __FILE__, __LINE__)
 
-
 #endif // TRACKER_H
+
+
