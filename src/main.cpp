@@ -4,7 +4,7 @@
 int main() {
     // MALLOC allocated, never freed (leak)
     int* leak_ptr = (int*) MALLOC(sizeof(int));
-    (void)leak_ptr;  // Suppress unused variable warning
+    (void)leak_ptr; 
     
     // MALLOC allocated, freed properly
     int* normal_ptr = (int*) MALLOC(sizeof(int));
@@ -24,24 +24,30 @@ int main() {
     // NEW allocated, deleted twice (double delete warning)
     int* new_ptr2 = NEW int;
     DELETE(new_ptr2);
-    DELETE(new_ptr2); // double delete warning expected here
+   // DELETE(new_ptr2); // double delete warning expected here
+
     int* ptr = (int*) MALLOC(sizeof(int));
     *ptr = 100;
 
     // Check pointer before use — should be OK
     CHECK_PTR(ptr);
-
     FREE(ptr);
-
     // Check pointer after free — should warn about use-after-free
     CHECK_PTR(ptr);
 
-    // Intentionally no FREE or DELETE on leak_ptr, so leak is detected
-int* array = NEW_ARRAY int[10];    // Note: `new` calls with file and line info, then array size
-//DELETE_ARRAY(array);
-// allocate array
-    print_memory_report();
-    print_memory_stats(); 
+    int* array = NEW_ARRAY int[10];    // Note: `new` calls with file and line info, then array size
+    DELETE_ARRAY(array);
+    DELETE_ARRAY(array);
+
+    //print_memory_report();
+    //print_memory_stats(); 
+    //debug_head_location();
+
+    export_json_report("memory_report.json");
+    export_csv_report("memory_report.csv");
+
 
     return 0;
 }
+
+
