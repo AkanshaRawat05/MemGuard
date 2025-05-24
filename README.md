@@ -73,6 +73,22 @@ Manual memory management in C/C++ is error-prone. Common mistakes like:
 [LEAK] 80 bytes not freed (main.cpp:17)
 ```
 
+Or from the web interface:
+
+![Memory Leak Report Screenshot](assets/report-screenshot.png)
+
+* Total Allocations: 7
+* Total Frees: 6
+* Current Bytes Allocated: 4
+* Peak Bytes Allocated: 44
+* Issues detected: Double Free, Dangling Ptr, Leaked
+
+Color-coded log table:
+
+* 🔴 **Red**: Double Free / Leaked
+* 🗾 **Orange**: Dangling Pointer
+* 🟢 **Green**: Successfully freed
+
 ---
 
 ## 🧪 Testing
@@ -92,6 +108,7 @@ Test cases are included in the `more_testcases/` directory. They cover:
 MemGuard/
 ├── src/                 # Source code
 ├── test/                # Sample test programs
+├── assets/              # Images for reports (e.g., screenshots)
 ├── Makefile             # Build file
 ├── README.md            # Project documentation
 └── main.cpp             # Entry point with demo
