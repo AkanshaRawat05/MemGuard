@@ -2,39 +2,73 @@
 
 **Guarding your memory, securing your code**
 
-MemGuard is a lightweight memory leak detection tool for C/C++ programs. It dynamically intercepts heap memory operations to detect and report **memory leaks**, **double frees**, and **dangling pointer usage** during runtime — all without relying on external tools like Valgrind or AddressSanitizer.
+MemGuard is a lightweight memory tracking and leak detection tool for C and C++ applications. Designed to tackle the challenges of manual memory management, MemGuard replaces standard allocation functions with custom hooks to monitor and log all dynamic memory operations (malloc, calloc, realloc, free, new, and delete) during program execution.
 
 ---
 
 ## 🧠 Why MemGuard?
 
-Manual memory management in C/C++ is error-prone. Common mistakes like:
+In C/C++, developers are responsible for explicitly allocating and freeing memory. This often leads to difficult-to-debug errors such as:
 
-* Memory leaks (memory not freed)
-* Double frees (freeing already freed memory)
-* Dangling pointers (using freed memory)
+Memory leaks – allocated memory never freed
 
-...can cause crashes, undefined behavior, and security flaws. MemGuard aims to make debugging these issues simple and intuitive.
+Double frees – freeing the same memory twice
+
+Dangling pointers – accessing memory after it's been freed
+
+Incorrect use of new[] / delete[]
+
+These bugs can cause program crashes, instability, and security vulnerabilities, especially in small projects or for beginners.
 
 ---
 
 ## ⚙️ Features
 
-✅ Tracks dynamic memory operations: `malloc`, `calloc`, `realloc`, `free`, `new`, `delete`
-✅ Detects memory leaks, double frees, dangling pointers
-✅ Supports array versions: `new[]`, `delete[]`
-✅ Outputs structured logs in the console
-✅ Minimal overhead, works with a simple `Makefile`
-✅ Easy integration via macros (e.g., `MALLOC`, `FREE`, `NEW`, `DELETE`)
-✅ Modular design with future GUI support
+MemGuard provides a developer-friendly alternative to complex tools like Valgrind and AddressSanitizer:
+
+✅ Custom Memory Tracking Library
+Hooks into memory operations using macros and operator overloading.
+
+📊 Clear Diagnostic Reports
+Outputs both JSON and CSV reports for easy visualization and automation.
+
+🌐 Interactive Web Dashboard
+Visualizes memory operations with categorized tags:
+
+🔴 Memory Leaks
+
+⚠️ Double Frees
+
+🟠 Dangling Pointers
+
+🟢 Valid Frees
+
+✅ Seamless File  Analysis
+ The backend processes files via run_all.sh and displays results.
+
+🧩 Minimal Integration Overhead
+Lightweight, easy to plug into existing codebases without heavy performance costs.
+
+🔮 Scalable Architecture
+While currently single-threaded, MemGuard is structured for easy extension and future multithreading support.
 
 ---
 
 ## 🧰 Technologies Used
 
-* Language: **C++**
-* Build: `Makefile`
-* Core concepts: **Macros**, **Operator overloading**, **Linked lists**
+|-------------------------|-----------------------------------------------------------------------------|
+| **Technology**          | **Purpose**                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------|
+| **C/C++**               | Core language for implementing memory tracking logic (tracker.cpp).         |
+|-------------------------|-----------------------------------------------------------------------------|
+| **HTML/CSS/JavaScript** | Used to build the interactive frontend dashboard for visualizing reports.   |
+|-------------------------|-----------------------------------------------------------------------------|
+| **json.hpp (nlohmann)** | Third-party C++ library to generate structured JSON output from memory data.|
+|-------------------------|-----------------------------------------------------------------------------|
+| **Bash (run\_all.sh)**  | Automates the compilation and execution flow along with report generation.  |
+|-------------------------|-----------------------------------------------------------------------------|
+| **Makefile**            | Simplifies compilation process for tracker and user-provided C/C++ files.   |
+|-------------------------|-----------------------------------------------------------------------------|
 
 ---
 
@@ -56,24 +90,21 @@ Manual memory management in C/C++ is error-prone. Common mistakes like:
 3. **Run a Test Program**
 
    ```bash
-   ./main
+   ./leak_detector
    ```
+4.**Run frontend**
+```bash
+   python3 -m http.server 8000
+```
 
-4. **Review Logs**
+5. **Review Logs**
 
    * Output will show memory allocations, deallocations, and any errors detected.
 
 ---
 
 ## 🔍 Example Output
-
-```bash
-[INFO] Allocated 40 bytes at main.cpp:25
-[WARNING] Double free detected at main.cpp:39
-[LEAK] 80 bytes not freed (main.cpp:17)
-```
-
-Or from the web interface:
+ from the web interface:
 
 ![Memory Leak Report Screenshot](assets/output.jpg)
 
@@ -118,9 +149,26 @@ MemGuard/
 
 ## 🚀 Future Enhancements
 
-* GUI or Web-based interface for visualization
-* Thread safety and multithreaded program support
-* More extensive test automation
+🧵 Multithreading Support
+Extend MemGuard to track memory operations safely across multiple threads, ensuring accurate detection in concurrent environments.
+
+🧠 Static Analysis Integration
+Combine dynamic tracking with static code analysis to catch potential memory issues before runtime.
+
+🧩 IDE Plugins
+Develop plugins for popular IDEs (e.g., Visual Studio, CLion) to provide real-time memory diagnostics during coding.
+
+📈 Improved Visualization
+Add timeline views and detailed call stacks to help trace the origin of memory errors more precisely.
+
+🌐 Support for More Languages
+Expand support beyond C/C++ to include other languages with manual memory management needs.
+
+⚡ Performance Optimization
+Further reduce runtime overhead to enable use in performance-critical applications.
+
+🔁 Automated CI/CD Integration
+Integrate MemGuard reports into continuous integration pipelines for automatic memory safety checks on every build.
 
 ---
 
@@ -136,3 +184,5 @@ MemGuard/
 ## 📄 License
 
 This project is for educational use and academic demonstration. Licensing info may be added later.
+
+
