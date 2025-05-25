@@ -35,13 +35,11 @@ Outputs both JSON and CSV reports for easy visualization and automation.
 🌐 Interactive Web Dashboard
 Visualizes memory operations with categorized tags:
 
-🔴 Memory Leaks
+   -🔴 Memory Leaks/ Double Frees
 
-⚠️ Double Frees
+   -🟡 Dangling Pointers
 
-🟠 Dangling Pointers
-
-🟢 Valid Frees
+   -🟢 Valid Frees
 
 ✅ Seamless File  Analysis
  The backend processes files via run_all.sh and displays results.
