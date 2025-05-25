@@ -54,19 +54,14 @@ While currently single-threaded, MemGuard is structured for easy extension and f
 
 ## 🧰 Technologies Used
 
-|-------------------------|-----------------------------------------------------------------------------|
+
 | **Technology**          | **Purpose**                                                                 |
-| ----------------------- | ----------------------------------------------------------------------------|
 | **C/C++**               | Core language for implementing memory tracking logic (tracker.cpp).         |
-|-------------------------|-----------------------------------------------------------------------------|
 | **HTML/CSS/JavaScript** | Used to build the interactive frontend dashboard for visualizing reports.   |
-|-------------------------|-----------------------------------------------------------------------------|
 | **json.hpp (nlohmann)** | Third-party C++ library to generate structured JSON output from memory data.|
-|-------------------------|-----------------------------------------------------------------------------|
 | **Bash (run\_all.sh)**  | Automates the compilation and execution flow along with report generation.  |
-|-------------------------|-----------------------------------------------------------------------------|
 | **Makefile**            | Simplifies compilation process for tracker and user-provided C/C++ files.   |
-|-------------------------|-----------------------------------------------------------------------------|
+
 
 ---
 
