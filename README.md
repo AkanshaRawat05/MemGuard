@@ -106,6 +106,7 @@ While currently single-threaded, MemGuard is structured for easy extension and f
 * Total Frees: 6
 * Current Bytes Allocated: 4
 * Peak Bytes Allocated: 44
+
 * Issues detected: Double Free, Dangling Ptr, Leaked
 
 Color-coded log table:
