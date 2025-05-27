@@ -100,7 +100,7 @@ While currently single-threaded, MemGuard is structured for easy extension and f
 ## 🔍 Example Output
  from the web interface:
 
-![Memory Leak Report Screenshot](assets/output.jpg)
+![Memory Leak Report Screenshot](assets/output.png)
 
 * Total Allocations: 7
 * Total Frees: 6
